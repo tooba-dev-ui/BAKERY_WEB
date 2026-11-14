@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bakerz Bite — freshly baked treats, handcrafted with love.">
+  <title>Bakerz Bite | Freshly Baked Happiness</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--cream:#fffaf3;--paper:#fffdf9;--ink:#35251f;--muted:#806f65;--brown:#744b3a;--rose:#d99b87;--peach:#f5e4d8;--line:#eaded3;--green:#66765b;--shadow:0 18px 45px rgba(74,47,34,.10)}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);line-height:1.6}
+    a{text-decoration:none;color:inherit}
+    button{font:inherit;cursor:pointer}
+    .announcement{background:var(--ink);color:#fff5e9;text-align:center;padding:9px 15px;font-size:11px;letter-spacing:1.7px;text-transform:uppercase}
+    header{position:sticky;top:0;z-index:20;background:rgba(255,250,243,.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(234,222,211,.8)}
+    .nav{max-width:1180px;margin:auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{font-family:'Playfair Display',serif;font-size:27px;font-weight:700;letter-spacing:.2px;line-height:1}
+    .brand span{color:var(--rose)}
+    .brand small{display:block;font:600 8px 'DM Sans',sans-serif;letter-spacing:3px;text-align:center;margin-top:7px;color:var(--muted)}
+    .nav-links{display:flex;align-items:center;gap:30px;font-size:13px;font-weight:600;color:#5f4b40}
+    .nav-links a{transition:color .2s}.nav-links a:hover{color:var(--rose)}
+    .nav-actions{display:flex;align-items:center;gap:12px}
+    .cart-btn,.menu-btn{border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:30px;padding:9px 15px;font-size:12px;font-weight:700}
+    .cart-count{display:inline-grid;place-items:center;background:var(--rose);color:white;width:19px;height:19px;border-radius:50%;font-size:10px;margin-left:5px}
+    .menu-btn{display:none}
+    .hero{max-width:1180px;margin:0 auto;padding:54px 24px 70px;display:grid;grid-template-columns:1.02fr .98fr;align-items:center;gap:55px}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--brown);font-size:11px;letter-spacing:2.4px;text-transform:uppercase;font-weight:700}
+    .eyebrow:before{content:"";width:27px;height:1px;background:var(--rose)}
+    h1,h2,h3{font-family:'Playfair Display',serif;font-weight:600}
+    h1{font-size:clamp(48px,6vw,76px);line-height:1.04;letter-spacing:-1.8px;margin:19px 0}
+    h1 em{font-style:normal;color:var(--rose)}
+    .hero-copy{max-width:470px;color:var(--muted);font-size:15px;line-height:1.9}
+    .hero-buttons{display:flex;gap:13px;align-items:center;margin-top:29px;flex-wrap:wrap}
+    .btn{display:inline-flex;justify-content:center;align-items:center;border:0;border-radius:30px;padding:13px 23px;background:var(--brown);color:white;font-size:12px;font-weight:700;letter-spacing:.4px;transition:transform .2s,background .2s}
+    .btn:hover{transform:translateY(-3px);background:var(--ink)}
+    .btn-outline{background:transparent;color:var(--brown);border:1px solid #cdb6a8}
+    .btn-outline:hover{color:white}
+    .hero-note{font-size:11px;color:var(--muted);margin-top:24px}
+    .hero-note strong{color:var(--green)}
+    .hero-visual{position:relative;min-height:470px}
+    .hero-photo{position:absolute;inset:0 28px 22px 0;border-radius:48% 48% 18px 18px;overflow:hidden;box-shadow:var(--shadow)}
+    .hero-photo img{width:100%;height:100%;object-fit:cover}
+    .floating-tag{position:absolute;right:0;bottom:0;background:var(--paper);padding:17px 21px;border-radius:14px;box-shadow:var(--shadow);max-width:190px}
+    .floating-tag strong{display:block;font:600 19px 'Playfair Display',serif}
+    .floating-tag span{font-size:10px;color:var(--muted);letter-spacing:.7px}
+    .stamp{position:absolute;top:24px;right:0;width:88px;height:88px;border-radius:50%;background:var(--rose);color:white;display:grid;place-items:center;text-align:center;font-size:10px;line-height:1.3;letter-spacing:1px;transform:rotate(10deg);border:5px solid var(--cream)}
+    .section{padding:78px 24px}
+    .section-inner{max-width:1180px;margin:auto}
+    .section-heading{text-align:center;margin-bottom:35px}
+    .section-heading .eyebrow{justify-content:center}
+    .section-heading h2{font-size:clamp(34px,4vw,48px);margin:10px 0 8px}
+    .section-heading p{color:var(--muted);font-size:13px}
+    .categories{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:34px}
+    .category{height:205px;position:relative;border-radius:15px;overflow:hidden}
+    .category img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+    .category:hover img{transform:scale(1.07)}
+    .category:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,rgba(35,22,16,.72))}
+    .category span{position:absolute;z-index:1;bottom:17px;left:19px;color:white;font:600 22px 'Playfair Display',serif}
+    #menu{background:#f8eee5}
+    .filters{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin:25px 0 30px}
+    .filter{border:1px solid #dfcfc2;background:transparent;color:var(--brown);padding:9px 17px;border-radius:25px;font-size:11px;font-weight:700}
+    .filter.active,.filter:hover{background:var(--brown);border-color:var(--brown);color:white}
+    .products{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+    .product{background:var(--paper);border-radius:15px;overflow:hidden;box-shadow:0 5px 22px rgba(74,47,34,.045);transition:transform .25s,box-shadow .25s}
+    .product:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+    .product-image{height:220px;position:relative;overflow:hidden;background:var(--peach)}
+    .product-image img{width:100%;height:100%;object-fit:cover;transition:transform .45s}
+    .product:hover .product-image img{transform:scale(1.06)}
+    .tag{position:absolute;top:13px;left:13px;background:#fffaf1;color:var(--brown);padding:6px 10px;border-radius:20px;font-size:9px;letter-spacing:.8px;text-transform:uppercase;font-weight:700}
+    .product-info{padding:16px}
+    .product-info h3{font-size:19px;margin-bottom:4px}
+    .product-info p{font-size:11px;color:var(--muted);min-height:36px}
+    .product-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:14px}
+    .price{font-size:14px;font-weight:700;color:var(--brown)}
+    .add{border:0;border-radius:50%;width:34px;height:34px;background:var(--peach);color:var(--brown);font-size:20px;line-height:1;transition:.2s}
+    .add:hover{background:var(--brown);color:white}
+    .story{display:grid;grid-template-columns:1fr 1fr;gap:65px;align-items:center}
+    .story-image{height:430px;border-radius:18px;overflow:hidden}
+    .story-image img{width:100%;height:100%;object-fit:cover}
+    .story h2{font-size:clamp(36px,4vw,51px);line-height:1.13;margin:14px 0}
+    .story p{font-size:13px;color:var(--muted);line-height:2;margin:15px 0}
+    .perks{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
+    .perk{border-top:1px solid var(--line);padding-top:13px}
+    .perk strong{display:block;font:600 18px 'Playfair Display',serif}
+    .perk span{font-size:10px;color:var(--muted)}
+    .quote-section{background:var(--green);color:#fffaf3;text-align:center;padding:65px 24px}
+    .quote-section p{font:500 clamp(25px,3.4vw,39px)/1.35 'Playfair Display',serif;max-width:790px;margin:13px auto}
+    .quote-section span{font-size:10px;letter-spacing:2px;color:#e9d7c7}
+    .contact{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center;background:var(--peach);border-radius:20px;padding:42px}
+    .contact h2{font-size:38px;line-height:1.15;margin:10px 0}
+    .contact p{font-size:12px;color:var(--muted);max-width:400px}
+    .contact-form{display:flex;gap:8px;background:white;padding:7px;border-radius:35px}
+    .contact-form input{flex:1;min-width:0;border:0;outline:0;padding:0 13px;background:transparent;font:12px 'DM Sans',sans-serif;color:var(--ink)}
+    .contact-form button{white-space:nowrap}
+    footer{background:var(--ink);color:#f9eee4;padding:42px 24px 20px}
+    .footer-inner{max-width:1180px;margin:auto;display:flex;justify-content:space-between;gap:35px;flex-wrap:wrap}
+    footer .brand{font-size:25px}
+    footer .brand small{color:#c7b3a5}
+    .footer-copy{font-size:11px;color:#c7b3a5;max-width:260px;margin-top:16px;line-height:1.8}
+    .footer-links{display:flex;gap:20px;align-items:center;font-size:11px;color:#e6d5c8}
+    .footer-bottom{max-width:1180px;margin:30px auto 0;border-top:1px solid #5a4439;padding-top:15px;color:#bba99d;font-size:10px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+    .toast{position:fixed;right:22px;bottom:22px;background:var(--ink);color:white;padding:13px 18px;border-radius:10px;font-size:12px;box-shadow:var(--shadow);opacity:0;transform:translateY(12px);pointer-events:none;transition:.25s;z-index:50}
+    .toast.show{opacity:1;transform:translateY(0)}
+    @media(max-width:900px){.hero{gap:30px}.products{grid-template-columns:repeat(2,1fr)}.categories{grid-template-columns:repeat(2,1fr)}.nav-links{gap:16px}.story{gap:35px}}
+    @media(max-width:650px){.nav{padding:14px 18px}.menu-btn{display:block}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--cream);padding:20px 24px 25px;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start}.nav-links.open{display:flex}.hero{grid-template-columns:1fr;padding:48px 20px 55px;gap:35px}.hero-visual{min-height:350px}.hero-photo{inset:0 20px 18px 0}.stamp{width:72px;height:72px;font-size:8px}.section{padding:58px 20px}.categories{gap:12px}.category{height:155px}.category span{font-size:18px;left:13px}.products{gap:13px}.product-image{height:160px}.product-info{padding:12px}.product-info h3{font-size:16px}.product-info p{font-size:10px}.story{grid-template-columns:1fr}.story-image{height:300px;order:2}.perks{gap:10px}.perk strong{font-size:15px}.contact{grid-template-columns:1fr;padding:27px 20px}.contact h2{font-size:32px}.footer-links{flex-wrap:wrap}.brand{font-size:24px}}
+    @media(max-width:390px){.products{grid-template-columns:1fr 1fr}.product-image{height:135px}.product-info h3{font-size:14px}.price{font-size:12px}.add{width:30px;height:30px}}
+  </style>
+</head>
+<body>
+  <div class="announcement">Freshly baked every day · A little happiness in every bite</div>
+  <header>
+    <nav class="nav">
+      <a class="brand" href="#home">Bakerz<span>Bite</span><small>BAKED WITH LOVE</small></a>
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a><a href="#categories">Our Bakery</a><a href="#menu">Menu</a><a href="#story">Our Story</a><a href="#contact">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <button class="cart-btn" aria-label="Shopping cart">Cart <span class="cart-count" id="cartCount">0</span></button>
+        <button class="menu-btn" id="menuBtn" aria-label="Open navigation">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div>
+        <span class="eyebrow">A neighbourhood bakery</span>
+        <h1>Made with love.<br>Shared with <em>joy.</em></h1>
+        <p class="hero-copy">From buttery croissants to celebration cakes, discover little moments of happiness baked fresh and made to bring people together.</p>
+        <div class="hero-buttons"><a class="btn" href="#menu">Explore our treats&nbsp; ↗</a><a class="btn btn-outline" href="#story">Our story</a></div>
+        <p class="hero-note"><strong>✦ Baked fresh daily</strong> &nbsp;·&nbsp; Made with carefully chosen ingredients</p>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-photo"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1100&q=85" alt="Fresh artisan bread and pastries"></div>
+        <div class="stamp">FRESH<br>FROM OUR<br>OVEN ✦</div>
+        <div class="floating-tag"><strong>Sweet moments</strong><span>MADE FRESH, JUST FOR YOU</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="categories">
+      <div class="section-inner">
+        <div class="section-heading"><span class="eyebrow">A little something for everyone</span><h2>Explore our bakery</h2><p>Find your new favourite from our freshly made collection.</p></div>
+        <div class="categories">
+          <a class="category" href="#menu" data-jump="Pastries"><img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=700&q=80" alt="Golden flaky pastries"><span>Pastries</span></a>
+          <a class="category" href="#menu" data-jump="Cakes"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=80" alt="Chocolate celebration cake"><span>Celebration cakes</span></a>
+          <a class="category" href="#menu" data-jump="Cookies"><img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=700&q=80" alt="Freshly baked cookies"><span>Cookies</span></a>
+          <a class="category" href="#menu" data-jump="Breads"><img src="https://images.unsplash.com/photo-1585478259715-876acc5be8eb?auto=format&fit=crop&w=700&q=80" alt="Rustic artisan bread"><span>Artisan breads</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="menu">
+      <div class="section-inner">
+        <div class="section-heading"><span class="eyebrow">Fresh from the oven</span><h2>Our best-loved treats</h2><p>Handcrafted favourites to make your day a little sweeter.</p></div>
+        <div class="filters" aria-label="Filter products">
+          <button class="filter active" data-filter="All">All treats</button><button class="filter" data-filter="Pastries">Pastries</button><button class="filter" data-filter="Cakes">Cakes</button><button class="filter" data-filter="Cookies">Cookies</button><button class="filter" data-filter="Breads">Breads</button>
+        </div>
+        <div class="products" id="products">
+          <article class="product" data-category="Pastries"><div class="product-image"><img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=700&q=80" alt="Butter croissant"><span class="tag">Bestseller</span></div><div class="product-info"><h3>Butter Croissant</h3><p>Golden, flaky layers with a rich buttery centre.</p><div class="product-bottom"><span class="price">Rs. 280</span><button class="add" aria-label="Add Butter Croissant to cart">+</button></div></div></article>
+          <article class="product" data-category="Cakes"><div class="product-image"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=80" alt="Chocolate fudge cake"><span class="tag">Customer favourite</span></div><div class="product-info"><h3>Chocolate Fudge Cake</h3><p>Soft chocolate sponge with silky fudge frosting.</p><div class="product-bottom"><span class="price">Rs. 950</span><button class="add" aria-label="Add Chocolate Fudge Cake to cart">+</button></div></div></article>
+          <article class="product" data-category="Cookies"><div class="product-image"><img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=700&q=80" alt="Chocolate chip cookies"></div><div class="product-info"><h3>Choco Chip Cookies</h3><p>Chewy centres, crisp edges, and chocolate in every bite.</p><div class="product-bottom"><span class="price">Rs. 180</span><button class="add" aria-label="Add Choco Chip Cookies to cart">+</button></div></div></article>
+          <article class="product" data-category="Breads"><div class="product-image"><img src="https://images.unsplash.com/photo-1585478259715-876acc5be8eb?auto=format&fit=crop&w=700&q=80" alt="Artisan sourdough loaf"><span class="tag">Fresh daily</span></div><div class="product-info"><h3>Artisan Sourdough</h3><p>A rustic crust with a soft, flavourful crumb.</p><div class="product-bottom"><span class="price">Rs. 420</span><button class="add" aria-label="Add Artisan Sourdough to cart">+</button></div></div></article>
+          <article class="product" data-category="Pastries"><div class="product-image"><img src="https://images.unsplash.com/photo-1623334044303-241021148842?auto=format&fit=crop&w=700&q=80" alt="Cinnamon rolls"></div><div class="product-info"><h3>Classic Cinnamon Roll</h3><p>Warm cinnamon swirls finished with sweet glaze.</p><div class="product-bottom"><span class="price">Rs. 320</span><button class="add" aria-label="Add Cinnamon Roll to cart">+</button></div></div></article>
+          <article class="product" data-category="Cakes"><div class="product-image"><img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=700&q=80" alt="Strawberry shortcake"></div><div class="product-info"><h3>Strawberry Dream Cake</h3><p>Light vanilla sponge, cream, and fresh strawberries.</p><div class="product-bottom"><span class="price">Rs. 1,100</span><button class="add" aria-label="Add Strawberry Dream Cake to cart">+</button></div></div></article>
+          <article class="product" data-category="Cookies"><div class="product-image"><img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=700&q=80" alt="Brownie squares"><span class="tag">Rich & fudgy</span></div><div class="product-info"><h3>Fudgy Brownie</h3><p>Deep cocoa flavour with a soft, gooey middle.</p><div class="product-bottom"><span class="price">Rs. 250</span><button class="add" aria-label="Add Fudgy Brownie to cart">+</button></div></div></article>
+          <article class="product" data-category="Breads"><div class="product-image"><img src="https://images.unsplash.com/photo-1534620808146-d33bb39128b2?auto=format&fit=crop&w=700&q=80" alt="Fresh bakery bread"></div><div class="product-info"><h3>Country Milk Bread</h3><p>Soft, pillowy bread for your everyday table.</p><div class="product-bottom"><span class="price">Rs. 350</span><button class="add" aria-label="Add Country Milk Bread to cart">+</button></div></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="story">
+      <div class="section-inner story">
+        <div class="story-image"><img src="https://images.unsplash.com/photo-1556217477-d325251ece38?auto=format&fit=crop&w=1000&q=85" alt="Baker preparing fresh dough"></div>
+        <div><span class="eyebrow">A story baked with care</span><h2>Good things take time. Great treats take heart.</h2><p>At Bakerz Bite, we believe the best memories are made around the table. That's why every batch is prepared with care, thoughtfully selected ingredients, and a little extra love.</p><p>Whether it's your morning pastry, an afternoon cookie, or a cake for a special day, we're here to make every bite feel special.</p><a href="#menu" class="btn">Find your favourite&nbsp; ↗</a><div class="perks"><div class="perk"><strong>Fresh daily</strong><span>Made in small batches</span></div><div class="perk"><strong>Made with care</strong><span>Quality ingredients</span></div><div class="perk"><strong>For sharing</strong><span>Joy in every bite</span></div></div></div>
+      </div>
+    </section>
+
+    <section class="quote-section"><span>OUR LITTLE BAKERY PHILOSOPHY</span><p>“Where smiles are served daily, and every bite feels like home.”</p><span>BAKERZ BITE</span></section>
+
+    <section class="section" id="contact">
+      <div class="section-inner contact">
+        <div><span class="eyebrow">Stay in the loop</span><h2>A little sweetness in your inbox.</h2><p>Sign up for bakery updates, seasonal specials, and fresh-from-the-oven news.</p></div>
+        <form class="contact-form" id="newsletter"><input type="email" placeholder="Your email address" aria-label="Your email address" required><button class="btn" type="submit">Join us&nbsp; ↗</button></form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div><a class="brand" href="#home">Bakerz<span>Bite</span><small>BAKED WITH LOVE</small></a><p class="footer-copy">Thoughtful bakes, warm moments, and a little happiness in every bite.</p></div>
+      <div class="footer-links"><a href="#home">Home</a><a href="#menu">Our menu</a><a href="#story">Our story</a><a href="#contact">Contact</a></div>
+    </div>
+    <div class="footer-bottom"><span>© <span id="year"></span> Bakerz Bite. All rights reserved.</span><span>Freshly baked. Happily shared.</span></div>
+  </footer>
+  <div class="toast" id="toast" role="status" aria-live="polite">Added to your cart!</div>
+
+  <script>
+    const cartCount = document.getElementById('cartCount');
+    const toast = document.getElementById('toast');
+    let cart = 0;
+    let toastTimer;
+    document.querySelectorAll('.add').forEach(button => {
+      button.addEventListener('click', () => {
+        cart++;
+        cartCount.textContent = cart;
+        toast.textContent = 'Added to your cart! (' + cart + (cart === 1 ? ' item)' : ' items)');
+        toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove('show'), 1900);
+      });
+    });
+
+    document.querySelectorAll('.filter').forEach(button => {
+      button.addEventListener('click', () => {
+        document.querySelectorAll('.filter').forEach(item => item.classList.remove('active'));
+        button.classList.add('active');
+        const chosen = button.dataset.filter;
+        document.querySelectorAll('.product').forEach(product => {
+          product.style.display = chosen === 'All' || product.dataset.category === chosen ? '' : 'none';
+        });
+      });
+    });
+
+    document.querySelectorAll('[data-jump]').forEach(card => {
+      card.addEventListener('click', () => {
+        const chosen = card.dataset.jump;
+        document.querySelectorAll('.filter').forEach(item => {
+          item.classList.toggle('active', item.dataset.filter === chosen);
+        });
+        document.querySelectorAll('.product').forEach(product => {
+          product.style.display = product.dataset.category === chosen ? '' : 'none';
+        });
+      });
+    });
+
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('open')));
+
+    document.getElementById('newsletter').addEventListener('submit', event => {
+      event.preventDefault();
+      const email = event.target.querySelector('input').value;
+      toast.textContent = 'Thank you! You are on our list.';
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 2400);
+      event.target.reset();
+    });
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
